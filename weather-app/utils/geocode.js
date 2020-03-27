@@ -1,6 +1,4 @@
-
-const request=require('request')
-const geocode=require('./utils/weather')            
+const request=require('request')         
 
 
 const geocode=(address,callback)=>{
@@ -13,9 +11,9 @@ const geocode=(address,callback)=>{
             callback('Unable to find location. Try another one.',undefined)
         }else{
             callback(undefined,{
-                latitude: body.callbackfeatures[0].center[0],
-                latitude: body.callbackfeatures[0].center[1],
-                location: body.callbackfeatures[0].place_name
+                longitude: body.features[0].center[0],
+                latitude: body.features[0].center[1],
+                location: body.features[0].place_name
             })
         }
     })

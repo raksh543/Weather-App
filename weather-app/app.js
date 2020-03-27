@@ -1,6 +1,5 @@
-const request=require('request')
 const geocode=require('./utils/geocode')
-const geocode=require('./utils/weather')
+const weather=require('./utils/weather')
 //  const yargs=require('yargs')
 
 // const url='https://api.darksky.net/forecast/cc24bd7e3706fd0293170604381b60e2/37.8267,-122?units=us&lang=es'
@@ -48,23 +47,23 @@ const geocode=require('./utils/weather')
 //     },
 //     handler:
 // })
-const location=process.args[2]
-if(!location){
+const address=process.argv[2]
+if(!address){
     console.log('Please provide a location')
 }else{
     // geocode(location,(error,data)=>{
-        geocode(location,(error,{latitude,longitude,location})=>{    
-    if(error){
-             return(console.log('Error:' + error))
-         }
+        geocode(address,(error,data)=>{    
+            if(error){
+                    return(console.log('Error:' + error ))
+                }
         //  console.log('Data:'+data)
-         weather(latitude,longitude,(error,forecastData)=>{
-             if(error){
-                 return(console.log('Error:' + error))
-             }
-             console.log(loaction)
-             console.log(forecastData)
-         })
+            weather(data.latitude,data.longitude,(error,forecastData)=>{
+                if(error){
+                    return(console.log('Error:' + error))
+                }
+                console.log(address)
+                console.log(forecastData)
+            })
      })
 }
 

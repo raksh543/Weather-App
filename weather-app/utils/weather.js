@@ -17,4 +17,4 @@ const weather=(latitude,longitude,callback)=>{
     })
 }
 
-module.exorts=weather
+module.exports=weather
