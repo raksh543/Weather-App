@@ -8,6 +8,10 @@ const weather=require('./utils/weather')
 // console.log(path.join(__dirname,'../public')) 
 
 const app=express()
+
+//setting uo heroku
+const port=process.env.PORT || 3000
+
 const publicDirectoryPath=path.join(__dirname,'../public')
 const viewPath=path.join(__dirname,'../templates/views')
 const partialsPath=path.join(__dirname,'../templates/partials')
@@ -135,6 +139,6 @@ app.get('*',(req,res)=>{
 
 //To start the server
 //port 3000 is for local developement environment
-app.listen(3000,()=>{
-    console.log('Server is up on the port 3000')//This msg is never gonna display
+app.listen(port,()=>{
+    console.log('Server is up on the port '+ port)//This msg is never gonna display
 })
